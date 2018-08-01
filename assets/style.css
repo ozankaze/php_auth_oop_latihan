@@ -1,0 +1,19 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    width: 80%;
+    margin: 20px auto;
+}
+
+header {
+    border-bottom: 2px solid grey;
+    padding-bottom: 10px;
+}
+
+footer {
+    border-top: 2px solid grey;
+    padding-top: 10px;
+}
