@@ -30,7 +30,7 @@ if( Input::get('submit') ) {
     // die($user);
   } else {
   	// die('ada masalah');
-  	print_r($validation->errors());
+  	$errors = $validation->errors();
   }
 
 }
@@ -48,6 +48,14 @@ require_once "templates/header.php";
     <input type="text" name="password"><br><br>
 
     <input type="submit" name="submit" value="daftar sekarang">
+
+  <?php if( !empty($errors) ) { ?>
+  	<div>
+  		<?php foreach ($errors as $error) : ?>
+  			<li><?php echo $error ?></li>
+  		<?php endforeach ?>
+  	</div>
+  <?php } ?>
 
 </form>
 
