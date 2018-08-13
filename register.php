@@ -2,12 +2,36 @@
 require_once "core/init.php";
 
 if( Input::get('submit') ) {
-    
+
+	// 1. memanggil object validasi
+	$validation = new Validation();
+
+	// 2. metode check
+	$validation = $validation->check(array(
+		"username" => array(
+								'required' => true,
+								'min' => 3,
+								'max' => 50, 
+							),
+		"password" => array(
+								'required' => true,
+								'min' => 3, 
+							),
+	));  
+
+
+  // 3. lolos pengujian  
+	if( $validation->passed() ) { 
+  
     $user->register_user(array(
         'username' => Input::get('username'),
         'password' => password_hash(Input::get('password'), PASSWORD_DEFAULT)
     ));
     // die($user);
+  } else {
+  	// die('ada masalah');
+  	print_r($validation->errors());
+  }
 
 }
 
