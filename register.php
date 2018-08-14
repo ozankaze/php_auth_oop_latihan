@@ -1,6 +1,8 @@
 <?php
 require_once "core/init.php";
 
+$errors = array();
+
 if( Input::get('submit') ) {
 
 	// 1. memanggil object validasi

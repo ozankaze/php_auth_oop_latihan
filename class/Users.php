@@ -15,6 +15,20 @@ class Users {
         else return false;
     }
 
+    public function login_user($username, $password)
+    {
+        // "SELECT * FROM users WHERE username = username";
+        $data = $this->_db->get_info('users', 'username', $username);
+        // print_r($data);die();
+
+
+        if( password_verify($password, $data['password']) ) {
+            // $data->daridatabase
+            return true;
+        } else {
+            return false
+        };
+    }
 
 }
 
