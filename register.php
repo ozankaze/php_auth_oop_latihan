@@ -25,6 +25,9 @@ if( Input::get('submit') ) {
 							),
 	));  
 
+  if( $user->cek_nama(Input::get('username')) ) {
+    $errors[] = "nama sudah terdaftar";
+  } else {
 
   // 3. lolos pengujian  
 	if( $validation->passed() ) { 
@@ -41,6 +44,8 @@ if( Input::get('submit') ) {
   } else {
   	// die('ada masalah');
   	$errors = $validation->errors();
+  }
+
   }
 
 }
