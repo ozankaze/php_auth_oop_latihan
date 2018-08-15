@@ -31,6 +31,11 @@ class Validation
 							$this->addError("$item maximal $rule_value karakter");
 						}
 						break;
+					case 'match':
+						if( Input::get($item) != Input::get($rule_value) ){
+							$this->addError("$item harus sama dengan $rule_value");
+						}
+						break;
 					
 					default:
 						# code...

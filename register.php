@@ -23,6 +23,10 @@ if( Input::get('submit') ) {
 								'required' => true,
 								'min' => 3, 
 							),
+    "password_verify" => array(
+                'required' => true,
+                'match' => 'password',
+              )
 	));  
 
   if( $user->cek_nama(Input::get('username')) ) {
@@ -61,6 +65,9 @@ require_once "templates/header.php";
 
     <label>Password</label>
     <input type="text" name="password"><br><br>
+
+    <label>Ulangi Password</label>
+    <input type="text" name="password_verify"><br><br>
 
     <input type="submit" name="submit" value="daftar sekarang">
 
