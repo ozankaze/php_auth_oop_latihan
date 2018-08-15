@@ -11,8 +11,12 @@
         <header>
             <h3>Belajar bareng Bang Fauzan</h3>
             <nav>
+              <?php if( Session::exists('username') ) { ?>
+                <a href="logout.php">Logout</a>
+              <?php } else { ?>
                 <a href="login.php">Login</a>
                 <a href="register.php">Register</a>
+              <?php } ?>
                 <a href="profile.php">Profile</a>
             </nav>
         </header>
