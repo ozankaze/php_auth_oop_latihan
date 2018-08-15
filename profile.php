@@ -3,7 +3,7 @@ require_once "core/init.php";
 
 if( !Session::exists('username') ) {
 	Session::flash('login', 'anda harus login');
-	header("Location: login.php");
+	Redirect::to('login');
 }
 
 if( Session::exists('profile') ) {

@@ -2,7 +2,7 @@
 require_once "core/init.php";
 
 if( Session::exists('username') ) {
-  header("Location: profile.php");
+  Redirect::to('profile');
 }
 
 if( Session::exists('login') ) {
@@ -29,7 +29,7 @@ if( Input::get('submit') ) {
     if ( $user->cek_nama(Input::get('username')) ) {
       if( $user->login_user( Input::get('username'),Input::get('password') ) ) {
         Session::set('username', Input::get('username'));
-        header("Location: profile.php");
+        Redirect::to('profile');
       } else {
         $errors[] =  "login gagal";
       }

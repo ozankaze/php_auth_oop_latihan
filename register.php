@@ -2,7 +2,7 @@
 require_once "core/init.php";
 
 if( Session::exists('username') ) {
-  header("Location: profile.php");
+  Redirect::to('profile');
 }
 
 $errors = array();
@@ -43,7 +43,7 @@ if( Input::get('submit') ) {
 
     Session::flash('profile', 'selamat anda berhasil mendaftar!');
     Session::set('username', Input::get('username'));
-    header("Location: profile.php");
+    Redirect::to('profile');
 
     // die($user);
   } else {
