@@ -22,12 +22,18 @@ class Users {
         // print_r($data);die();
 
 
-        if( password_verify($password, $data['password']) ) {
+        if( password_verify($password, $data['password']) )
             // $data->daridatabase
             return true;
-        } else {
-            return false
-        };
+        else return false;
+    }
+
+    public function cek_nama($username)
+    {
+        $data = $this->_db->get_info('users', 'username', $username);
+        // print_r($data);
+        if( empty($data) ) return false; 
+        else return true;
     }
 
 }

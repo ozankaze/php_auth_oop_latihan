@@ -1,7 +1,7 @@
 <?php
 require_once "core/init.php";
 
-$errors = array();
+$errors = [];
 
 if( Input::get('submit') ) {
 
@@ -18,16 +18,19 @@ if( Input::get('submit') ) {
   // 3. lolos pengujian  
 	if( $validation->passed() ) { 
   
-    if( $user->login_user( Input::get('username'),Input::get('password') ) ) {
-      Session::set('username', Input::get('username'));
-      header("Location: profile.php");
+    if ( $user->cek_nama(Input::get('username')) ) {
+      if( $user->login_user( Input::get('username'),Input::get('password') ) ) {
+        Session::set('username', Input::get('username'));
+        header("Location: profile.php");
+      } else {
+        $errors[] =  "login gagal";
+      }
     } else {
-      $errors =  "login gagal";
+        $errors[] =  "namanya belum terdaftar";
     }
-    // die($user);
   } else {
   	// die('ada masalah');
-  	$errors = $validation->errors();
+  	$errors[] = $validation->errors();
   }
 
 }
