@@ -2,7 +2,12 @@
 require_once "core/init.php";
 
 if( !Session::exists('username') ) {
-	header("Location: register.php");
+	Session::flash('login', 'anda harus login');
+	header("Location: login.php");
+}
+
+if( Session::exists('profile') ) {
+	echo Session::flash('profile');
 }
 
 require_once "templates/header.php";

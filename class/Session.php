@@ -15,4 +15,23 @@ class Session {
 		return $_SESSION[$nama];
 	}	
 
+	// self cara mengambil metode sendiri
+	public static function flash($nama, $pesan = [])
+	{
+		if( self::exists($nama) ) {
+			$session = self::get($nama);
+			self::delete($nama);
+			return $session;
+		} else {
+			self::set($nama, $pesan);
+		}
+	} 
+
+	public static function delete($nama)
+	{
+		if( self::exists($nama) ) {
+			unset($_SESSION[$nama]);
+		}
+	}
+
 }
