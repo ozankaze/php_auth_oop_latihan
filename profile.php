@@ -18,6 +18,8 @@ require_once "templates/header.php";
 
 <h1>hi <?php echo $user_data['username']  ?></h1>
 
+<a href="change-password.php">Ganti password</a>
+
 <?php if( $user->is_admin( Session::get('username') ) ) { ?>
 	Fungsi Khusus Admin
 <?php } ?>

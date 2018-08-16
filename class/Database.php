@@ -82,6 +82,34 @@ class Database {
         return $this->mysqli->real_escape_string($name);
     }
 
+    public function update($table, $fields, $id)
+    {
+
+        // menganti nilai;
+        $valueArrays = array();
+        $i = 0;
+
+        // UPDATE TABLE SET kunci=nilai
+        foreach( $fields as $key=>$values ) {
+            if( is_int($values) ) {
+                $valueArrays[$i] = $key . '=' . $this->escape($values);
+            } else {
+                $valueArrays[$i] = $key . "='" . $this->escape($values) . "'";
+            }
+            
+            $i++;
+        }
+
+        $values = implode(", ", $valueArrays ); // implode menggabungkan array
+
+        // INSERT INTO $table ($kolom) VALUES ($nilai)
+
+        $query = "UPDATE $table SET $values WHERE id = $id";
+
+        // die($query);
+        return $this->run_query($query, 'masalah saat mengupdate data');
+    }
+
 }
 
 Database::getInstance();
