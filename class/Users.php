@@ -44,6 +44,15 @@ class Users {
         else return false;   
     }
 
+    public function is_logIn()
+    {
+        if( Session::exists('username') ) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }
 
 

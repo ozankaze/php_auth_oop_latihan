@@ -1,7 +1,7 @@
 <?php
 require_once "core/init.php";
 
-if( !Session::exists('username') ) {
+if( !$user->is_logIn() ) {
 	Session::flash('login', 'anda harus login');
 	Redirect::to('login');
 }
