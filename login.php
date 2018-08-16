@@ -13,6 +13,8 @@ $errors = [];
 
 if( Input::get('submit') ) {
 
+  if( Token::check(Input::get('token')) ) {
+
 	// 1. memanggil object validasi
 	$validation = new Validation();
 
@@ -40,7 +42,7 @@ if( Input::get('submit') ) {
   	// die('ada masalah');
   	$errors[] = $validation->errors();
   }
-
+ }
 }
 
 require_once "templates/header.php";
@@ -54,6 +56,8 @@ require_once "templates/header.php";
 
     <label>Password</label>
     <input type="text" name="password"><br><br>
+
+    <input type="hidden" name="token" value="<?php echo Token::generate() ?>">
 
     <input type="submit" name="submit" value="login sekarang">
 
