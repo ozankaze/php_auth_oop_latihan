@@ -36,6 +36,14 @@ class Users {
         else return true;
     }
 
+    public function is_admin($username)
+    {
+        $data = $this->_db->get_info('users', 'username', $username);
+        // print_r($data);
+        if( $data['role'] == 1 ) return true; 
+        else return false;   
+    }
+
 }
 
 
